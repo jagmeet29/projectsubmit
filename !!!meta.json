@@ -1,0 +1,100 @@
+{
+	"formatVersion": 2,
+	"appVersion": "0.95.0",
+	"files": [
+		{
+			"isClone": false,
+			"noteId": "StoH6TJchzXV",
+			"notePath": [
+				"StoH6TJchzXV"
+			],
+			"title": "New note",
+			"notePosition": 50,
+			"prefix": null,
+			"isExpanded": true,
+			"type": "text",
+			"mime": "text/html",
+			"attributes": [],
+			"format": "html",
+			"dataFileName": "New note.html",
+			"attachments": [
+				{
+					"attachmentId": "J406aj51xDIe",
+					"title": "F4JKGIKLYIPL3B0.jpg",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_F4JKGIKLYIPL3B0.jpg"
+				},
+				{
+					"attachmentId": "Pr7O1kJu08pj",
+					"title": "cmareamodule1.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_cmareamodule1.png"
+				},
+				{
+					"attachmentId": "Q8fBX8gLBxDA",
+					"title": "camera.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_camera.png"
+				},
+				{
+					"attachmentId": "RYPU78OtHva5",
+					"title": "dev-02-023-2.jpg",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_dev-02-023-2.jpg"
+				},
+				{
+					"attachmentId": "VqaqSmByrgSo",
+					"title": "cameramodule.jpg",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_cameramodule.jpg"
+				},
+				{
+					"attachmentId": "VYzIfMOYEN0l",
+					"title": "cmareamodule2.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_cmareamodule2.png"
+				},
+				{
+					"attachmentId": "wAp658AJJ9Dl",
+					"title": "dev-02-023-2.jpg",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "1_New note_dev-02-023-2.jpg"
+				},
+				{
+					"attachmentId": "X8Yn07yvhhQT",
+					"title": "39.jpg",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "New note_39.jpg"
+				}
+			]
+		},
+		{
+			"noImport": true,
+			"dataFileName": "navigation.html"
+		},
+		{
+			"noImport": true,
+			"dataFileName": "index.html"
+		},
+		{
+			"noImport": true,
+			"dataFileName": "style.css"
+		}
+	]
+}

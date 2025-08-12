@@ -1,94 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portable Prescription Digitizer</title>
-    <link rel="stylesheet" href="enhanced-style.css">
-    <!-- Original CSS file is commented out -->
-    <!-- <link rel="stylesheet" href="1.css"> -->
-</head>
-<body>
-    <section id="content">
-    <h1>Portable Prescription Digitizer</h1>
-    <hr>
-    <h2>Requirements</h2>
-    <ol>
-        <li><b>Micro controller </b>-<ul>
-            <li>High  speed</li>
-            <li>Low Power consumption</li>
-        </ul></li>
-        <li><b>Camera</b> -<ul>
-            <li>Wide angle to reduce hight</li>
-            <li>Hight image quality for image processing</li>
-        </ul> </li>
-        <li><b>Size and portability</b> - <ul>
-            <li>Small in size</li>
-            <li>Light weight</li>
-        </ul></li>
-        <li><b>Data Transmission</b> -<ul>
-            <li>Wireless</li>
-            <li>High speed</li>
-            <li>Low power consumption</li>
-        </ul></li>
-    </ol>
-<br>
-    <h2>Camera Module Selection</h2>
-    <p>The camera need to wide angle enough to peed the paper / prescription in the view. The prescription is A4 size at max i.e. the hight of 29.7 cm. Adding 7 cm buffer for hand movement and adjustment the total hight required would be 43.7 cm.</p>
-    
-    <img src="camera.png" alt="Camera Module">
-    
-    <ol>
-        <li><b>IMX415 (8MP)</b><ul>
-            <li>Resolution: 3840×2160</li>
-            <li>FOV: 98° with <1% distortion</li>
-            <li>Interface: 4-Lane MIPI CSI-2</li>
-            <li>Applications: Facial recognition, surveillance, license plate recognition</li>
-        </ul></li>
-        <li><b>OV5640 (5MP)</b><ul>
-            <li>Resolution: 2592×1944</li>
-            <li>Wide-angle options: 160-degree fisheye available</li>
-            <li>Advantages: Better image quality than OV2640</li>
-    </ol>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <header class="hero">
+        <h1>Portable Prescription Digitizer</h1>
+        <p class="subtitle">Concept, requirements, and component selections</p>
+      </header>
 
-    <blockquote>Selected OV5640 because of it wider view.</blockquote>
-    <br>
-    <h2>Wireless Communication</h2>
-    <h3>ESP NOW</h3>
-    <p>For wireless communication, we can use ESP-NOW protocol which is a connectionless protocol that allows devices to communicate without the need for a traditional Wi-Fi network. This is particularly useful for low-power devices that need to send small amounts of data quickly.</p>
-    <p>ESP-NOW is supported by ESP32 and ESP8266 micro controllers, which are popular choices for IoT applications. The protocol allows for direct communication between devices, enabling fast and efficient data transfer without the overhead of establishing a full Wi-Fi connection.</p>
-    <h3>WiFi (With Optimization Strategies)</h3>
-    <p>To ensure reliable communication, we can implement WiFi optimization strategies such as using
-WiFiMulti for redundancy. This allows the device to connect to multiple Wi-Fi networks and automatically switch between them if one becomes unavailable, ensuring continuous connectivity.</p>
-    <p>Additionally, we can analyze network performance to identify potential bottlenecks and optimize throughput. This may involve adjusting Wi-Fi settings, such as channel selection and bandwidth, to improve overall performance.</p>
-    <p>Security is also a critical consideration. We can implement data encryption and secure transmission protocols to protect sensitive information during transmission. This is especially important when dealing with personal health data, such as prescriptions.</p>
-    <blockquote>With ESP-NOW we still need to send the data to cloud. We can chose to do the processing offline and only send purely useful data. But in WIFI we have to send everything to a local server (at the clint location) or main server. <br><br> <i> With WIFI / cellular the system is purely portable but with ESP-NOW it need an intermediate device. </i></blockquote>
-    
-    <h2>Micro controller</h2>
-    <p>For the micro controller, we can use ESP32 or ESP8266. Both of these micro controllers are capable of handling the required tasks and have built-in support for Wi-Fi and Bluetooth communication.</p>
+      <main class="ck-content">
+        <section>
+          <h2 style="margin: 1rem;">Requirements</h2>
+          <ol>
+            <li>
+              <strong>Micro controller</strong>
+              <ul>
+                <li>High speed</li>
+                <li>Low power consumption</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Camera</strong>
+              <ul>
+                <li>Wide angle to reduce height</li>
+                <li>High image quality for image processing</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Size and portability</strong>
+              <ul>
+                <li>Small in size</li>
+                <li>Light weight</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Data Transmission</strong>
+              <ul>
+                <li>Wireless</li>
+                <li>High speed</li>
+                <li>Low power consumption</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
 
-    </section>
-    
+        <section>
+          <h2>Camera Module Selection</h2>
+          <p>
+            The camera needs to be wide-angle enough to keep the paper / prescription in
+            view. The prescription is A4 size at max (height 29.7 cm). Adding ~7 cm buffer
+            for hand movement and adjustment, the total height required would be ~43.7 cm.
+          </p>
+          <figure class="image">
+            <img src="New note_camera.png" alt="Camera height and field of view diagram" />
+          </figure>
+        </section>
 
+        <section>
+          <h2>Candidate Camera Modules</h2>
+          <ol>
+            <li>
+              <strong>IMX415 (8MP)</strong>
+              <ul>
+                <li>Resolution: 3840×2160</li>
+                <li>FOV: 98° with &lt;1% distortion</li>
+                <li>Interface: 4-Lane MIPI CSI-2</li>
+                <li>Applications: Facial recognition, surveillance, license plate recognition</li>
+              </ul>
+            </li>
+            <li>
+              <strong>OV5640 (5MP)</strong>
+              <ul>
+                <li>Resolution: 2592×1944</li>
+                <li>Wide-angle options: 160° fisheye available</li>
+                <li>Advantages: Better image quality than OV2640</li>
+              </ul>
+            </li>
+          </ol>
+          <blockquote>
+            <p>Selected <strong>OV5640</strong> because of its wider view.</p>
+          </blockquote>
+          <div class="media-row">
+            <figure class="image">
+              <img src="New note_cameramodule.jpg" alt="Camera module photo" />
+            </figure>
+            <figure class="image">
+              <img src="New note_cmareamodule2.png" alt="Camera module board top" />
+            </figure>
+            <figure class="image">
+              <img src="New note_cmareamodule1.png" alt="Camera module board bottom" />
+            </figure>
+          </div>
+        </section>
 
-    <!-- Wireless Communication Solutions
-ESP-NOW Implementation
+        <section>
+          <h2>Wireless Communication</h2>
+          <h3>ESP-NOW</h3>
+          <p>
+            ESP-NOW is a connectionless protocol that allows devices to communicate without a
+            traditional Wi‑Fi network. It’s ideal for low-power devices that need to send small
+            amounts of data quickly and directly.
+          </p>
+          <p>
+            ESP-NOW is supported by ESP32 and ESP8266 micro controllers, enabling fast and
+            efficient data transfer without the overhead of establishing a full Wi‑Fi connection.
+          </p>
+          <h3>Wi‑Fi (With Optimization Strategies)</h3>
+          <p>
+            For reliability, strategies like <code>WiFiMulti</code> can provide redundancy by
+            connecting to multiple networks and automatically failing over. Throughput can be
+            improved by tuning channel selection and bandwidth.
+          </p>
+          <p>
+            Security is critical: apply data encryption and secure transmission protocols—especially
+            when handling personal health data such as prescriptions.
+          </p>
+          <blockquote>
+            <p>
+              With ESP‑NOW we still need to send the data to cloud. We can choose to process offline
+              and only send useful data. With Wi‑Fi we may send everything to a local server (at the
+              client location) or a main server.
+              <br /><br />
+              <em>
+                With Wi‑Fi / cellular the system is purely portable, whereas with ESP‑NOW it needs an
+                intermediate device.
+              </em>
+            </p>
+          </blockquote>
+        </section>
 
-    Technical advantages: Connectionless protocol, network independence
+        <section>
+          <h2>Micro controller</h2>
+          <p>
+            ESP32 or ESP8266 can handle the required tasks and include built‑in Wi‑Fi and Bluetooth
+            support.
+          </p>
+          <div class="media-row">
+            <figure class="image">
+              <img src="New note_39.jpg" alt="ESP board" />
+            </figure>
+            <figure class="image">
+              <img src="New note_F4JKGIKLYIPL3B0.jpg" alt="ESP development kit" />
+            </figure>
+          </div>
+        </section>
 
-    Performance characteristics: Range, throughput, reliability
-
-    Implementation complexity: Setup requirements, code examples
-
-WiFi Optimization Strategies
-
-    WiFiMulti for redundancy: Multiple network support, automatic failover
-
-    Network performance: Throughput analysis, user impact mitigation
-
-    Security considerations: Data encryption, secure transmission
- -->
-    
-
-</body>
+        <section>
+          <h2>Relevant Resources</h2>
+          <ul>
+            <li>
+              <a href="https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/">https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/</a></li>
+            <li><a href="https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/">https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/</a></li>
+            <li><a href="https://docs.cirkitdesigner.com/component/730294aa-1dff-42c6-90d3-42053a8a7674/esp32-cam-ov5640">https://docs.cirkitdesigner.com/component/730294aa-1dff-42c6-90d3-42053a8a7674/esp32-cam-ov5640</a></li>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
