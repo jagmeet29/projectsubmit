@@ -71,15 +71,27 @@ body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
+  background: var(--bg);
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+  /* Create a new stacking context so ::before can sit behind content with negative z-index */
+  isolation: isolate;
+}
+
+/* Fixed, non-repeating decorative background overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background: radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,0.08), transparent 60%),
               radial-gradient(900px 500px at 110% 10%, rgba(59,130,246,0.10), transparent 60%),
               linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
-  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
-  /* Keep decorative background fixed relative to the viewport */
-  background-attachment: fixed, fixed, fixed;
   background-repeat: no-repeat, no-repeat, no-repeat;
-  background-size: 1400px 700px, 1100px 600px, auto;
+  background-size: 1400px 700px, 1100px 600px, 100% 100%;
   background-position: 10% -10%, 110% 10%, 50% 0%;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .container {
@@ -191,10 +203,10 @@ a:hover { color: var(--brand-strong); }
   .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 }
 
-/* Mobile performance & compatibility: disable fixed backgrounds on small screens */
+/* Mobile compatibility: keep overlay fixed, but slightly enlarge for safe coverage */
 @media (max-width: 768px) {
-  body {
-    background-attachment: scroll, scroll, scroll;
+  body::before {
+    background-size: 1600px 800px, 1300px 700px, 100% 100%;
   }
 }
 
