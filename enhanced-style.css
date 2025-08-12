@@ -1,0 +1,174 @@
+/* Enhanced Visual Style for Portable Prescription Digitizer
+   Created: August 13, 2025
+*/
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-bg: #f8f9fa;
+  --dark-bg: #2c3e50;
+  --text-color: #333333;
+  --light-text: #ffffff;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--light-bg);
+  line-height: 1.6;
+}
+
+#content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Typography */
+h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: var(--secondary-color);
+}
+
+h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin: 1.5rem 0 1rem 0;
+  border-left: 5px solid var(--secondary-color);
+  padding-left: 1rem;
+}
+
+h3 {
+  color: var(--secondary-color);
+  font-size: 1.4rem;
+  margin: 1.2rem 0 0.8rem 0;
+}
+
+p {
+  line-height: 1.8rem;
+  margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  line-height: 1.5rem;
+}
+
+ol > li {
+  padding-bottom: 0.6rem;
+  line-height: 1.6rem;
+}
+
+ul > li {
+  margin-bottom: 0.5rem;
+}
+
+/* Bold elements */
+b {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* Blockquote */
+blockquote {
+  background-color: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin: 1.5rem 0;
+  border-left: 5px solid var(--secondary-color);
+  position: relative;
+  font-style: italic;
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 3rem;
+  color: rgba(52, 152, 219, 0.3);
+}
+
+blockquote i {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+  margin: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #content {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  img {
+    padding: 0.5rem;
+  }
+}

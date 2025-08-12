@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="1.css">
+    <title>Portable Prescription Digitizer</title>
+    <link rel="stylesheet" href="enhanced-style.css">
+    <!-- Original CSS file is commented out -->
+    <!-- <link rel="stylesheet" href="1.css"> -->
 </head>
 <body>
     <section id="content">
     <h1>Portable Prescription Digitizer</h1>
     <hr>
-    <h2>Requirements:</h2>
+    <h2>Requirements</h2>
     <ol>
         <li><b>Micro controller </b>-<ul>
             <li>High  speed</li>
@@ -32,10 +34,10 @@
     </ol>
 <br>
     <h2>Camera Module Selection</h2>
-    <p>The camera need to wide angle enough to peed the paper / prescription in the view.</p>
+    <p>The camera need to wide angle enough to peed the paper / prescription in the view. The prescription is A4 size at max i.e. the hight of 29.7 cm. Adding 7 cm buffer for hand movement and adjustment the total hight required would be 43.7 cm.</p>
     
     <img src="camera.png" alt="Camera Module">
-    <p> The prescription is A4 size at max i.e. the hight of 29.7 cm. Adding 7 cm buffer for hand movement and adjustment the total hight required would be 43.7 cm. </p>
+    
     <ol>
         <li><b>IMX415 (8MP)</b><ul>
             <li>Resolution: 3840×2160</li>
@@ -50,9 +52,42 @@
     </ol>
 
     <blockquote>Selected OV5640 because of it wider view.</blockquote>
+    <br>
+    <h2>Wireless Communication</h2>
+    <h3>ESP NOW</h3>
+    <p>For wireless communication, we can use ESP-NOW protocol which is a connectionless protocol that allows devices to communicate without the need for a traditional Wi-Fi network. This is particularly useful for low-power devices that need to send small amounts of data quickly.</p>
+    <p>ESP-NOW is supported by ESP32 and ESP8266 micro controllers, which are popular choices for IoT applications. The protocol allows for direct communication between devices, enabling fast and efficient data transfer without the overhead of establishing a full Wi-Fi connection.</p>
+    <h3>WiFi (With Optimization Strategies)</h3>
+    <p>To ensure reliable communication, we can implement WiFi optimization strategies such as using
+WiFiMulti for redundancy. This allows the device to connect to multiple Wi-Fi networks and automatically switch between them if one becomes unavailable, ensuring continuous connectivity.</p>
+    <p>Additionally, we can analyze network performance to identify potential bottlenecks and optimize throughput. This may involve adjusting Wi-Fi settings, such as channel selection and bandwidth, to improve overall performance.</p>
+    <p>Security is also a critical consideration. We can implement data encryption and secure transmission protocols to protect sensitive information during transmission. This is especially important when dealing with personal health data, such as prescriptions.</p>
+    <blockquote>With ESP-NOW we still need to send the data to cloud. We can chose to do the processing offline and only send purely useful data. But in WIFI we have to send everything to a local server (at the clint location) or main server. <br><br> <i> With WIFI / cellular the system is purely portable but with ESP-NOW it need an intermediate device. </i></blockquote>
+    
+    <h2>Micro controller</h2>
+    <p>For the micro controller, we can use ESP32 or ESP8266. Both of these micro controllers are capable of handling the required tasks and have built-in support for Wi-Fi and Bluetooth communication.</p>
+
     </section>
     
 
+
+    <!-- Wireless Communication Solutions
+ESP-NOW Implementation
+
+    Technical advantages: Connectionless protocol, network independence
+
+    Performance characteristics: Range, throughput, reliability
+
+    Implementation complexity: Setup requirements, code examples
+
+WiFi Optimization Strategies
+
+    WiFiMulti for redundancy: Multiple network support, automatic failover
+
+    Network performance: Throughput analysis, user impact mitigation
+
+    Security considerations: Data encryption, secure transmission
+ -->
     
 
 </body>
