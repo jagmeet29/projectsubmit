@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Portable Prescription Digitizer</title>
+	<!-- Optional: clean modern font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- New stylesheet (leaves existing 1.css untouched) -->
+	<link rel="stylesheet" href="modern-style.css" />
+</head>
+<body>
+	<header class="site-header">
+		<div class="container">
+			<div class="header-text">
+				<h1 class="title">Portable Prescription Digitizer</h1>
+				<p class="subtitle">Concept, requirements, and component selections</p>
+			</div>
+			<button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" title="Toggle theme">
+				<span class="icon" aria-hidden="true">🌙</span>
+				<span class="text">Dark</span>
+			</button>
+		</div>
+	</header>
+
+	<main id="content" class="container">
+		<section class="card">
+			<h2>Requirements</h2>
+			<ol class="fancy-list">
+				<li>
+					<b>Micro controller</b>
+					<ul>
+						<li>High speed</li>
+						<li>Low power consumption</li>
+					</ul>
+				</li>
+				<li>
+					<b>Camera</b>
+					<ul>
+						<li>Wide angle to reduce height</li>
+						<li>High image quality for image processing</li>
+					</ul>
+				</li>
+				<li>
+					<b>Size and portability</b>
+					<ul>
+						<li>Small in size</li>
+						<li>Light weight</li>
+					</ul>
+				</li>
+				<li>
+					<b>Data Transmission</b>
+					<ul>
+						<li>Wireless</li>
+						<li>High speed</li>
+						<li>Low power consumption</li>
+					</ul>
+				</li>
+			</ol>
+		</section>
+
+		<section class="card">
+			<h2>Camera Module Selection</h2>
+			<p>
+				The camera needs to be wide-angle enough to keep the paper / prescription in view. The prescription is A4 size at max (height 29.7 cm). Adding ~7 cm buffer for hand movement and adjustment, the total height required would be ~43.7 cm.
+			</p>
+
+			<figure class="media">
+				<img src="camera.png" alt="Camera module diagram" />
+				<figcaption>Illustration of camera coverage for A4 prescriptions</figcaption>
+			</figure>
+
+			<ol class="fancy-list">
+				<li>
+					<b>IMX415 (8MP)</b>
+					<ul>
+						<li>Resolution: 3840×2160</li>
+						<li>FOV: 98° with &lt;1% distortion</li>
+						<li>Interface: 4-Lane MIPI CSI-2</li>
+						<li>Applications: Facial recognition, surveillance, license plate recognition</li>
+					</ul>
+				</li>
+				<li>
+					<b>OV5640 (5MP)</b>
+					<ul>
+						<li>Resolution: 2592×1944</li>
+						<li>Wide-angle options: 160° fisheye available</li>
+						<li>Advantages: Better image quality than OV2640</li>
+					</ul>
+				</li>
+			</ol>
+
+			<blockquote class="note">
+				Selected <b>OV5640</b> because of its wider view.
+			</blockquote>
+		</section>
+
+		<section class="card">
+			<h2>Wireless Communication</h2>
+			<h3>ESP-NOW</h3>
+			<p>
+				ESP-NOW is a connectionless protocol that allows devices to communicate without a traditional Wi‑Fi network. It’s ideal for low-power devices that need to send small amounts of data quickly and directly.
+			</p>
+			<p>
+				ESP-NOW is supported by ESP32 and ESP8266 micro controllers, enabling fast and efficient data transfer without the overhead of establishing a full Wi‑Fi connection.
+			</p>
+
+			<h3>Wi‑Fi (With Optimization Strategies)</h3>
+			<p>
+				For reliability, strategies like <code>WiFiMulti</code> can provide redundancy by connecting to multiple networks and automatically failing over. Throughput can be improved by tuning channel selection and bandwidth.
+			</p>
+			<p>
+				Security is critical: apply data encryption and secure transmission protocols—especially when handling personal health data such as prescriptions.
+			</p>
+
+			<blockquote class="tip">
+				With ESP‑NOW we still need to send the data to cloud. We can choose to process offline and only send useful data. With Wi‑Fi we may send everything to a local server (at the client location) or a main server.
+				<br /><br />
+				<i>With Wi‑Fi / cellular the system is purely portable, whereas with ESP‑NOW it needs an intermediate device.</i>
+			</blockquote>
+		</section>
+
+		<section class="card">
+			<h2>Micro controller</h2>
+			<p>
+				ESP32 or ESP8266 can handle the required tasks and include built‑in Wi‑Fi and Bluetooth support.
+			</p>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<small>© <span id="year"></span> Portable Prescription Digitizer</small>
+		</div>
+	</footer>
+
+		<script>
+				// small enhancement: current year in footer
+				document.getElementById('year').textContent = new Date().getFullYear();
+
+				// Theme handling: system preference + manual override with persistence
+				(function() {
+					const storageKey = 'theme-preference';
+					const toggleBtn = document.getElementById('theme-toggle');
+					const mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+					const getStored = () => localStorage.getItem(storageKey);
+					const store = (val) => localStorage.setItem(storageKey, val);
+					const systemTheme = () => (mql.matches ? 'dark' : 'light');
+
+					function applyTheme(theme) {
+						document.documentElement.setAttribute('data-theme', theme);
+						updateToggle(theme);
+					}
+
+					function updateToggle(theme) {
+						const isDark = theme === 'dark';
+						toggleBtn.setAttribute('aria-pressed', String(isDark));
+						toggleBtn.querySelector('.icon').textContent = isDark ? '🌙' : '☀️';
+						toggleBtn.querySelector('.text').textContent = isDark ? 'Dark' : 'Light';
+					}
+
+					function init() {
+						const saved = getStored();
+						const theme = saved || systemTheme();
+						applyTheme(theme);
+
+						// If there is no manual preference, follow system changes
+						if (!saved) {
+							mql.addEventListener('change', (e) => {
+								applyTheme(e.matches ? 'dark' : 'light');
+							});
+						}
+
+						toggleBtn.addEventListener('click', () => {
+							const current = document.documentElement.getAttribute('data-theme') || systemTheme();
+							const next = current === 'dark' ? 'light' : 'dark';
+							applyTheme(next);
+							store(next);
+						});
+					}
+
+					init();
+				})();
+		</script>
+</body>
+</html>
