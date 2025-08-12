@@ -147,15 +147,29 @@ li { line-height: 1.75; }
 .fancy-list > li::marker { color: var(--accent); font-weight: 700; }
 
 /* Media */
-.media { margin: 10px 0 6px; text-align: center; }
-.media img { 
-  max-width: 100%; 
-  height: auto; 
-  border-radius: 12px; 
+.media {
+  margin: 10px 0 6px;
+  /* Responsive grid to accommodate 1+ images */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: start;
+}
+.media img {
+  max-width: 100%;
+  height: auto; /* override inline height attributes for natural aspect */
+  border-radius: 12px;
   border: 1px solid var(--border);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
 }
-.media figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+.media figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 6px;
+  grid-column: 1 / -1; /* span across all columns */
+  text-align: center;
+}
 
 /* Callouts */
 blockquote {
