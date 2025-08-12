@@ -1,3 +1,31 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+   
+}
+#content {
+    max-width: 900px;
+    margin: auto;
+}
+
+ul {
+    line-height: 1.3rem;
+}
+
+ol {
+    line-height: 2rem;
+}
+
+blockquote {
+    background-color: rgba(173, 216, 230, 0.626);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+img {
+    max-width: 70%;
+    padding: 2rem;
+}
+ 
+p {
+    line-height: 2 rem;
 }

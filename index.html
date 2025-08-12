@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="1.css">
 </head>
 <body>
+    <section id="content">
     <h1>Portable Prescription Digitizer</h1>
     <hr>
     <h2>Requirements:</h2>
@@ -23,30 +24,36 @@
             <li>Small in size</li>
             <li>Light weight</li>
         </ul></li>
-        <li><b>Data transmission</b> -<ul>
+        <li><b>Data Transmission</b> -<ul>
             <li>Wireless</li>
             <li>High speed</li>
             <li>Low power consumption</li>
         </ul></li>
     </ol>
+<br>
+    <h2>Camera Module Selection</h2>
+    <p>The camera need to wide angle enough to peed the paper / prescription in the view.</p>
+    
+    <img src="camera.png" alt="Camera Module">
+    <p> The prescription is A4 size at max i.e. the hight of 29.7 cm. Adding 7 cm buffer for hand movement and adjustment the total hight required would be 43.7 cm. </p>
+    <ol>
+        <li><b>IMX415 (8MP)</b><ul>
+            <li>Resolution: 3840×2160</li>
+            <li>FOV: 98° with <1% distortion</li>
+            <li>Interface: 4-Lane MIPI CSI-2</li>
+            <li>Applications: Facial recognition, surveillance, license plate recognition</li>
+        </ul></li>
+        <li><b>OV5640 (5MP)</b><ul>
+            <li>Resolution: 2592×1944</li>
+            <li>Wide-angle options: 160-degree fisheye available</li>
+            <li>Advantages: Better image quality than OV2640</li>
+    </ol>
 
+    <blockquote>Selected OV5640 because of it wider view.</blockquote>
+    </section>
     
 
-    <!-- Microprocessor requirements: Processing power, interface capabilities, power consumption
-
-    Camera specifications: Resolution, field of view, distortion levels, power usage
-
-    Battery life targets: Operating duration, sleep mode requirements
-
-    Size and portability constraints: Physical dimensions, weight limitations
-
-Performance Benchmarks
-
-    Image quality metrics: Resolution, distortion percentage, frame rates
-
-    Power consumption analysis: Active vs sleep mode consumption
-
-    Wireless transmission requirements: Range, data rates, reliability -->
+    
 
 </body>
 </html>
