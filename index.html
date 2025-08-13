@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -15,7 +15,7 @@
 
       <main class="ck-content">
         <section>
-          <h2 style="margin-: 1rem;">Requirements</h2>
+          <h2 style="margin: 1rem">Requirements</h2>
           <ol>
             <li>
               <strong>Micro controller</strong>
@@ -52,12 +52,16 @@
         <section>
           <h2>Camera Module Selection</h2>
           <p>
-            The camera needs to be wide-angle enough to keep the paper / prescription in
-            view. The prescription is A4 size at max (height 29.7 cm). Adding ~7 cm buffer
-            for hand movement and adjustment, the total height required would be ~43.7 cm.
+            The camera needs to be wide-angle enough to keep the paper /
+            prescription in view. The prescription is A4 size at max (height
+            29.7 cm). Adding ~7 cm buffer for hand movement and adjustment, the
+            total height required would be ~43.7 cm.
           </p>
           <figure class="image">
-            <img src="New note_camera.png" alt="Camera height and field of view diagram" />
+            <img
+              src="New note_camera.png"
+              alt="Camera height and field of view diagram"
+            />
           </figure>
         </section>
 
@@ -70,7 +74,10 @@
                 <li>Resolution: 3840×2160</li>
                 <li>FOV: 98° with &lt;1% distortion</li>
                 <li>Interface: 4-Lane MIPI CSI-2</li>
-                <li>Applications: Facial recognition, surveillance, license plate recognition</li>
+                <li>
+                  Applications: Facial recognition, surveillance, license plate
+                  recognition
+                </li>
               </ul>
             </li>
             <li>
@@ -83,17 +90,26 @@
             </li>
           </ol>
           <blockquote>
-            <p>Selected <strong>OV5640</strong> because of its wider view. Which would reducing the hight requirements of the system to 10cm. </p>
+            <p>
+              Selected <strong>OV5640</strong> because of its wider view. Which
+              would reducing the hight requirements of the system to 10cm.
+            </p>
           </blockquote>
           <div class="media-row">
             <figure class="image">
               <img src="New note_cameramodule.jpg" alt="Camera module photo" />
             </figure>
             <figure class="image">
-              <img src="New note_cmareamodule2.png" alt="Camera module board top" />
+              <img
+                src="New note_cmareamodule2.png"
+                alt="Camera module board top"
+              />
             </figure>
             <figure class="image">
-              <img src="New note_cmareamodule1.png" alt="Camera module board bottom" />
+              <img
+                src="New note_cmareamodule1.png"
+                alt="Camera module board bottom"
+              />
             </figure>
           </div>
         </section>
@@ -102,33 +118,38 @@
           <h2>Wireless Communication</h2>
           <h3>ESP-NOW</h3>
           <p>
-            ESP-NOW is a connectionless protocol that allows devices to communicate without a
-            traditional Wi‑Fi network. It’s ideal for low-power devices that need to send small
-            amounts of data quickly and directly.
+            ESP-NOW is a connectionless protocol that allows devices to
+            communicate without a traditional Wi‑Fi network. It’s ideal for
+            low-power devices that need to send small amounts of data quickly
+            and directly.
           </p>
           <p>
-            ESP-NOW is supported by ESP32 and ESP8266 micro controllers, enabling fast and
-            efficient data transfer without the overhead of establishing a full Wi‑Fi connection.
+            ESP-NOW is supported by ESP32 and ESP8266 micro controllers,
+            enabling fast and efficient data transfer without the overhead of
+            establishing a full Wi‑Fi connection.
           </p>
           <h3>Wi‑Fi (With Optimization Strategies)</h3>
           <p>
-            For reliability, strategies like <code>WiFiMulti</code> can provide redundancy by
-            connecting to multiple networks and automatically failing over. Throughput can be
-            improved by tuning channel selection and bandwidth.
+            For reliability, strategies like <code>WiFiMulti</code> can provide
+            redundancy by connecting to multiple networks and automatically
+            failing over. Throughput can be improved by tuning channel selection
+            and bandwidth.
           </p>
           <p>
-            Security is critical: apply data encryption and secure transmission protocols—especially
-            when handling personal health data such as prescriptions.
+            Security is critical: apply data encryption and secure transmission
+            protocols—especially when handling personal health data such as
+            prescriptions.
           </p>
           <blockquote>
             <p>
-              With ESP‑NOW we still need to send the data to cloud. We can choose to process offline
-              and only send useful data. With Wi‑Fi we may send everything to a local server (at the
-              client location) or a main server.
+              With ESP‑NOW we still need to send the data to cloud. We can
+              choose to process offline and only send useful data. With Wi‑Fi we
+              may send everything to a local server (at the client location) or
+              a main server.
               <br /><br />
               <em>
-                With Wi‑Fi / cellular the system is purely portable, whereas with ESP‑NOW it needs an
-                intermediate device.
+                With Wi‑Fi / cellular the system is purely portable, whereas
+                with ESP‑NOW it needs an intermediate device.
               </em>
             </p>
           </blockquote>
@@ -137,23 +158,38 @@
         <section>
           <h2>Micro controller</h2>
           <p>
-            ESP32-S3 with 8MB PSRAM can handle the required tasks and include built‑in Wi‑Fi and Bluetooth
-            support.
+            ESP32-S3 with 8MB PSRAM can handle the required tasks and include
+            built‑in Wi‑Fi and Bluetooth support.
           </p>
           <div class="media-row">
             <figure class="image">
               <img src="New note_39.jpg" alt="ESP board" />
             </figure>
             <figure class="image">
-              <img src="New note_F4JKGIKLYIPL3B0.jpg" alt="ESP development kit" />
+              <img
+                src="New note_F4JKGIKLYIPL3B0.jpg"
+                alt="ESP development kit"
+              />
             </figure>
           </div>
         </section>
 
         <section>
           <h1>Power consumption</h1>
-          <ol><li>The WIFI would use able ~290 mA when transmitting with micro content itself.</li> <li>The micro controller alone uses 31.7 mA or 8 mA in deep sleep mode.</li> <li> The power consumption of OV5640 is 140 mA or 0.02 mA standby.  </li> </ol>
-<div class="media-row">
+          <ol>
+            <li>
+              The WIFI would use able ~290 mA when transmitting with micro
+              controller itself.
+            </li>
+            <li>
+              The micro controller alone uses 31.7 mA or 8 mA in deep sleep
+              mode.
+            </li>
+            <li>
+              The power consumption of OV5640 is 140 mA or 0.02 mA standby.
+            </li>
+          </ol>
+          <div class="media-row">
             <figure class="image">
               <img src="wifipowerconsumtion.png" alt="ESP board" />
             </figure>
@@ -161,21 +197,66 @@
               <img src="ucpowerconsumption.png" alt="ESP development kit" />
             </figure>
           </div>
-          <br>
-           <b>Source</b> <ul> <li><a href="https://lucidar.me/en/esp32/power-consumption-of-esp32-s3-devkitm-1/">ESP32-S3-DevKitM-1 real current consumption in deep sleep mode</a> 
-          </li><li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf">ESP32-S3 Series
-Datasheet Version 2.0</a></li>
-<li> <a href="https://cdn.sparkfun.com/datasheets/Sensors/LightImaging/OV5640_datasheet.pdf">OV5640 Datasheet</a></li>
-</ul>
+          <br />
+          <h3>Batter Line Estimation</h3>
+          <script
+            type="text/javascript"
+            id="MathJax-script"
+            async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+          ></script>
+          <p>
+            $$\begin{aligned} 290 + 140 &= 430\ \text{mA} && \text{(Actively
+            Sending Data)} \\ 8 + 0.02 &= 8.02\ \text{mA} && \text{(Deep Sleep
+            with camera standby)} \end{aligned}$$
+          </p>
+          <br />
+          <b>Source</b>
+          <ul>
+            <li>
+              <a
+                href="https://lucidar.me/en/esp32/power-consumption-of-esp32-s3-devkitm-1/"
+                >ESP32-S3-DevKitM-1 real current consumption in deep sleep
+                mode</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf"
+                >ESP32-S3 Series Datasheet Version 2.0</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://cdn.sparkfun.com/datasheets/Sensors/LightImaging/OV5640_datasheet.pdf"
+                >OV5640 Datasheet</a
+              >
+            </li>
+          </ul>
         </section>
 
         <section>
           <h2>Relevant Resources for Development</h2>
           <ul>
             <li>
-              <a href="https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/">https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/</a></li>
-            <li><a href="https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/">https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/</a></li>
-            <li><a href="https://docs.cirkitdesigner.com/component/730294aa-1dff-42c6-90d3-42053a8a7674/esp32-cam-ov5640">https://docs.cirkitdesigner.com/component/730294aa-1dff-42c6-90d3-42053a8a7674/esp32-cam-ov5640</a></li>
+              <a
+                href="https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/"
+                >https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/"
+                >https://www.instructables.com/ESP-NOW-Instant-Wireless-Communication-for-ESP32/</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.cirkitdesigner.com/component/730294aa-1dff-42c6-90d3-42053a8a7674/esp32-cam-ov5640"
+                >https://docs.cirkitdesigner.com/component/730294aa-1dff-42c6-90d3-42053a8a7674/esp32-cam-ov5640</a
+              >
+            </li>
+          </ul>
         </section>
       </main>
     </div>
