@@ -80,3 +80,8 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", M
 
 /* Blockquote tweak to match site */
 .ck-content blockquote { border-left-color: #d9d9d9; color: #333; }
+
+#powermath,#resources {
+  overflow-x: scroll;
+  
+}
