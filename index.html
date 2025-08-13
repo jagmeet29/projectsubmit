@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portable Prescription Digitizer</title>
     <link rel="stylesheet" href="style.css" />
-    <title>Markdown with LaTeX</title>
-    
-    <!-- MathJax for LaTeX rendering -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
-    <script>
-        // Configure MathJax
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            }
-        };
-    </script>
   </head>
   <body>
     <div class="content">
@@ -207,6 +189,8 @@
               The power consumption of OV5640 is 140 mA or 0.02 mA standby.
             </li>
           </ol>
+
+          
           <div class="media-row">
             <figure class="image">
               <img src="wifipowerconsumtion.png" alt="ESP board" />
@@ -226,6 +210,7 @@
           <p id="powermath">
             $$\begin{aligned} 290 + 140 &= 430\ \text{mA} && \text{(Actively Sending Data)} \\ 8 + 0.02 &= 8.02\ \text{mA} && \text{(Deep Sleep with camera standby)} \end{aligned}$$
           </p>
+          <blockquote> With 3 1200 mAh lithium-ion batteries the system will last 8.4 hours in active state and 400 hours in low current state. </blockquote>
           <br />
           <b>Source</b>
           <ul>
@@ -274,31 +259,6 @@
             </li>
           </ul>
         </section>
-        <div id="content"></div>
-    
-    <script>
-        async function loadMarkdown(filePath) {
-            try {
-                const response = await fetch(filePath);
-                const markdownText = await response.text();
-                
-                // Convert markdown to HTML
-                const htmlContent = marked.parse(markdownText);
-                
-                // Insert into page
-                document.getElementById('content').innerHTML = htmlContent;
-                
-                // Re-render MathJax after content is loaded
-                MathJax.typesetPromise();
-                
-            } catch (error) {
-                console.error('Error loading markdown:', error);
-            }
-        }
-        
-        // Load your markdown file
-        loadMarkdown('your-content.md');
-    </script>
       </main>
     </div>
   </body>
