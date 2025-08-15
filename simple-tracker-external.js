@@ -5,7 +5,7 @@
     // 🛠️ CONFIGURATION - For External Access
     // Your computer's IP addresses: 192.168.56.1 or 192.168.29.109
     // Use the one that works on your network (usually the 192.168.29.109)
-    const SERVER_URL = 'http://jagmeet.ddns.net:8080';  // 👈 Your IP address!
+    const SERVER_URL = 'http://[2405:201:500f:584d:8dfd:87c9:a456:286]:8080';  // 👈 Your IP address!
     
     // 📊 COLLECT VISITOR INFORMATION
     function collectVisitorData() {
